@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <title>Google日本語入力 辞書統合ツール</title>
+  <style>
+    textarea {
+      width: 80%;
+      height: 300px;
+      margin-bottom: 10px;
+    }
+    .file-input {
+      margin-bottom: 10px;
+    }
+    #dictionaries {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    #dictionaries > div {
+      width: 48%; /* 2つの辞書を並べて表示 */
+      border: 1px solid #ccc;
+      padding: 5px;
+      overflow-y: scroll;
+      height: 300px; /* スクロール可能に */
+      font-family: monospace; /* 等幅フォントで見やすく */
+    }
+    .added { background-color: #d4edda; }   /* 緑系 */
+    .removed { background-color: #f8d7da; } /* 赤系 */
+    .modified { background-color: #fff3cd; } /* 黄色系 */
+    .common { } /* スタイルなし */
+     #stats {
+      margin-bottom: 10px;
+    }
+    #diff-only {
+      border: 1px solid #ccc;
+      padding: 5px;
+      margin-bottom: 10px;
+      overflow-y: scroll;
+      height: 200px; /* スクロール可能に */
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Google日本語入力 辞書統合ツール</h1>
+
+  <div class="file-input">
+    <label for="file1">辞書ファイル1:</label>
+    <input type="file" id="file1" accept=".txt">
+  </div>
+
+  <div class="file-input">
+    <label for="file2">辞書ファイル2:</label>
+    <input type="file" id="file2" accept=".txt">
+  </div>
+
+  <div>
+    <label for="comment-handling">コメントの扱い:</label>
+    <select id="comment-handling">
+      <option value="combine">結合する</option>
+      <option value="keep-first">ファイル1を優先</option>
+      <option value="keep-second">ファイル2を優先</option>
+    </select>
+  </div>
+
+  <button id="merge-button">辞書を統合</button>
+
+    <div id="dictionaries">
+        <div id="dictionary1-display"></div>
+        <div id="dictionary2-display"></div>
+    </div>
+
+  <div id="stats">
+    <p>辞書1の単語数: <span id="dict1-count">0</span></p>
+    <p>辞書2の単語数: <span id="dict2-count">0</span></p>
+    <p>統合後の単語数: <span id="merged-count">0</span></p>
+  </div>
+
+    <h2>差分のみ表示</h2>
+    <div id="diff-only"></div>
+
+  <h2>統合結果</h2>
+  <textarea id="merged-dictionary"></textarea>
+
+  <button id="download-button">ダウンロード</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
