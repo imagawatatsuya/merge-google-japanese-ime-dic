@@ -44,9 +44,9 @@
 </head>
 <body>
   <h1>Google日本語入力 辞書統合ツール</h1>
-<div><p>
+<div>
 <strong>※辞書ファイルを再読み込みするときは、F5キー（更新）で画面をリセットしてください。</strong>
-</p></div>
+</div>
   <div class="file-input">
     <label for="file1">辞書ファイル1:</label>
     <input type="file" id="file1" accept=".txt">
